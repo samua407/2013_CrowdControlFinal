@@ -6,9 +6,6 @@ void testApp::setup(){
 	#ifdef _USE_LIVE_VIDEO
         vidGrabber.setVerbose(true);
         vidGrabber.initGrabber(320,240);
-	#else
-        vidPlayer.loadMovie("fingers.mov");
-        vidPlayer.play();
 	#endif
 
     colorImg.allocate(320,240);
@@ -17,7 +14,7 @@ void testApp::setup(){
 	grayDiff.allocate(320,240);
 
 	bLearnBakground = true;
-	threshold = 80;
+	threshold = 100;
 }
 
 //--------------------------------------------------------------
@@ -68,23 +65,23 @@ void testApp::draw(){
 	grayImage.draw(360,20);
 	grayBg.draw(20,280);
 	grayDiff.draw(360,280);
-
+    
 	// then draw the contours:
-
+    
 	ofFill();
 	ofSetHexColor(0x333333);
 	ofRect(360,540,320,240);
 	ofSetHexColor(0xffffff);
-
+    
 	// we could draw the whole contour finder
 	//contourFinder.draw(360,540);
-
+    
 	// or, instead we can draw each blob individually,
 	// this is how to get access to them:
     for (int i = 0; i < contourFinder.nBlobs; i++){
         contourFinder.blobs[i].draw(360,540);
     }
-
+    
 	// finally, a report:
 
 	ofSetHexColor(0xffffff);
