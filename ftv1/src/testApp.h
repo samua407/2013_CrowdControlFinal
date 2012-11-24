@@ -4,8 +4,8 @@
 
 #include "ofxOpenCv.h"
 
-#define _USE_LIVE_VIDEO		// uncomment this to use a live camera
-								// otherwise, we'll use a movie file
+#define _USE_LIVE_VIDEO		
+                            
 
 class testApp : public ofBaseApp{
 
@@ -40,7 +40,20 @@ class testApp : public ofBaseApp{
 
 		int 				threshold;
 		bool				bLearnBakground;
-
+    
+    
+//--------ribbon drawing
+    
+    //this holds all of our points
+    vector<ofVec3f> points;
+    //this keeps track of the center of all the points
+    ofVec3f center;
+    
+	//our camera objects for looking at the scene from multiple perspectives
+	ofCamera camera;
+	
+	//if usecamera is true, we'll turn on the camera view
+    bool usecamera;
 
 };
 
